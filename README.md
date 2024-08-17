@@ -75,8 +75,13 @@ Pastikan Anda telah menginstal:
     ```bash
     php artisan serve
 
-Aplikasi akan berjalan di [http://localhost:8000/](http://localhost:8000/).
+Aplikasi akan berjalan di [http://localhost:8000/docs/api](http://localhost:8000/docs/api).
 
 ### Dokumentasi REST API
 
 Untuk dokumentasi REST API bisa mengakses [http://localhost:8000/docs/api](http://localhost:8000/docs/api)
+## Authors
+
+- [Muhammad Oby](https://github.com/muhammadoby)
+- [Kesava](https://github.com/kesavamas)
+- [Pindra](https://github.com/)
