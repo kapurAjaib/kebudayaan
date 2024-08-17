@@ -15,9 +15,9 @@ Berikut adalah langkah-langkah untuk menginstal proyek ini di mesin lokal Anda:
 
 Pastikan Anda telah menginstal:
 
-- [PHP](https://www.php.net/) >= 8.0
+- [PHP](https://www.php.net/) >= 8.1
 - [Composer](https://getcomposer.org/)
-- [Laravel](https://laravel.com/) >= 8.x
+- [Laravel](https://laravel.com/) >= 10.x
 - [MySQL](https://www.mysql.com/) atau database lain yang kompatibel
 
 ### Langkah Instalasi
