@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\auth\ProfileController;
+use App\Http\Controllers\Api\Auth\VerifyEmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix(env("API_VERSION"))->middleware(['auth:sanctum'])->group(function () {
     Route::resource('profile', ProfileController::class);
+    Route::post('verify-email', [VerifyEmailController::class, 'verify'])->name('api.verify-email');
+    Route::post('verified-email', [VerifyEmailController::class, 'verified'])->name('api.verified-email');
 });

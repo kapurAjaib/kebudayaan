@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function(){
+    return response()->json([
+        'status' => true,
+        'message' => 'Please read the documentation to use this API',
+        'code' => 200
+    ], 200);
+});
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
