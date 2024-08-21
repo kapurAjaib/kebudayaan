@@ -21,5 +21,5 @@ Route::prefix(env("API_VERSION"))->middleware(['auth:sanctum'])->group(function 
     Route::resource('profile', ProfileController::class)->only('index', 'update', 'destroy');
     Route::post('verify-email', [VerifyEmailController::class, 'verify'])->name('api.verify-email')->middleware('throttle:6,1');
     Route::post('verified-email', [VerifyEmailController::class, 'verified'])->name('api.verified-email');
-    Route::resource('bookmark', BookmarkController::class)->only('index', 'store');
+    Route::resource('bookmark', BookmarkController::class)->only('index', 'store', 'update');
 });

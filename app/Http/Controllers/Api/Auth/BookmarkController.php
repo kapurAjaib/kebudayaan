@@ -89,20 +89,15 @@ class BookmarkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validator = Validator::make($request->all(), [
-            'culture_id' => 'required|numeric',
-            'user_id' => 'required|numeric|in:' . $request->user()->id,
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'message' => $validator->errors(),
-                'code' => 400
-            ], 400);
-        }
         try {
             $bookmark = Bookmark::find($id);
+            if($bookmark->user_id != $request->user()->id) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'You are not authorized to update this bookmark',
+                    'code' => 403
+                ], 403);
+            }
             $bookmark->culture_id = $request->culture_id;
             $bookmark->user_id = $request->user()->id;
 
