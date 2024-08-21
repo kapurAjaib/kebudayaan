@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\ForgotPasswordController;
-use App\Http\Controllers\api\RegisterController;
-use App\Http\Controllers\api\SigninController;
+use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\SigninController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

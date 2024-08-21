@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\BookmarkController;
-use App\Http\Controllers\api\auth\ProfileController;
+use App\Http\Controllers\Api\Auth\ProfileController;
 use App\Http\Controllers\Api\Auth\VerifyEmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
