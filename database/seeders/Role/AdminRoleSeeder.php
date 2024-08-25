@@ -14,5 +14,35 @@ class AdminRoleSeeder extends Seeder
     public function run(): void
     {
         $role = Role::create(['name' => 'admin']);
+
+        $role->givePermissionTo([
+            'create post',
+            'edit post',
+            'delete post',
+
+            'create user',
+            'edit user',
+            'delete user',
+
+            'create role',
+            'edit role',
+            'delete role',
+
+            'create permission',
+            'edit permission',
+            'delete permission',
+
+            'create tag',
+            'edit tag',
+            'delete tag',
+
+            'create event',
+            'edit event',
+            'delete event',
+
+            'create comment',
+            'edit comment',
+            'delete comment',
+        ]);
     }
 }

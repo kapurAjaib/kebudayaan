@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function(){
-    return view('api.index');
+
+Route::get('/', function () {
+    return response()->json([
+        'status' => true,
+        'message' => 'Please read the documentation to use this API',
+        'code' => 200
+    ], 200);
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

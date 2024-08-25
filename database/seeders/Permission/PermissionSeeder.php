@@ -35,9 +35,9 @@ class PermissionSeeder extends Seeder
             'delete permission',
 
             // category
-            'create category',
-            'edit category',
-            'delete category',
+            'create tag',
+            'edit tag',
+            'delete tag',
 
             // event
             'create event',

@@ -14,5 +14,10 @@ class UserRoleSeeder extends Seeder
     public function run(): void
     {
         $role = Role::create(['name' => 'user']);
+        $role->givePermissionTo([
+            'create comment',
+            'edit comment',
+            'delete comment',
+        ]);
     }
 }

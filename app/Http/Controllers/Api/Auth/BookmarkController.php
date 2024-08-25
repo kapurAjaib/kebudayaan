@@ -37,7 +37,6 @@ class BookmarkController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'culture_id' => 'required|numeric',
-            'user_id' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {

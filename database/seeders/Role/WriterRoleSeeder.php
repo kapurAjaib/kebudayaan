@@ -14,5 +14,16 @@ class WriterRoleSeeder extends Seeder
     public function run(): void
     {
         $role = Role::create(['name' => 'writer']);
+        $role->givePermissionTo([
+            'create post',
+            'edit post',
+            'delete post',
+            'create comment',
+            'edit comment',
+            'delete comment',
+            'create tag',
+            'edit tag',
+            'delete tag',
+        ]);
     }
 }

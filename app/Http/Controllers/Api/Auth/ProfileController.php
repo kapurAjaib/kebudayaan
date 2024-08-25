@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class ProfileController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display user profile.
      */
     public function index(Request $request)
     {
@@ -24,39 +24,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Update user profile.
      */
     public function update(Request $request, string $id)
     {
@@ -85,7 +53,7 @@ class ProfileController extends Controller
                 'phone' => $request->phone
             ]);
             $user->save();
-            
+
             return response()->json([
                 'status' => true,
                 'message' => 'Profile updated',
@@ -102,7 +70,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove user profile.
      */
     public function destroy(string $id)
     {

@@ -13,6 +13,9 @@ use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
 {
+    /**
+     * Send email to reset password
+     */
     public function send(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -60,6 +63,54 @@ class ForgotPasswordController extends Controller
                     'code' => 500
                 ], 500);
             }
+        }
+    }
+
+    /**
+     * Reset password
+     */
+    public function resetPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'token' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        if (validator()->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'code' => 400
+            ], 400);
+        }
+        try {
+            $user = User::where('email', $request->email)->firstOrFail();
+            $token = DB::table('password_reset_tokens')->where('email', $request->email)->where('token', $request->token)->firstOrFail();
+
+            if (now() > $token->created_at) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Token expired',
+                    'code' => 400
+                ], 400);
+            }
+
+            $user->password = bcrypt($request->password);
+            $user->save();
+
+            DB::table('password_reset_tokens')->where('email', $request->email)->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Password has been reset',
+                'code' => 200
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage(),
+                'code' => 500
+            ], 500);
         }
     }
 }
