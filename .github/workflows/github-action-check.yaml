@@ -1,0 +1,19 @@
+name: checker
+on: 
+    pull_request: 
+     types:
+        - opened
+        - reopened
+jobs: 
+    client_check:
+        runs-on: ubuntu-latest
+        defaults:
+            run: 
+                working-directory: ./client
+        steps: 
+            - uses: actions/checkout@v4
+            - name: Use node.js
+              uses: actions/setup-node@v4
+            - run: npm ci
+            - run: npm run lint
+            - run: npm run build
