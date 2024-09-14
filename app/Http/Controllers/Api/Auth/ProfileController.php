@@ -72,7 +72,7 @@ class ProfileController extends Controller
     /**
      * Remove user profile.
      */
-    public function destroy(string $id)
+    public function destroy(String $id)
     {
         try {
             $user = User::find($id);
