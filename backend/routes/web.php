@@ -18,4 +18,8 @@ use App\Http\Controllers\Api\SigninController;
 Route::get('auth/google', [SigninController::class, 'google'])->name('api.signin.google');
 Route::get('auth/google/callback', [SigninController::class, 'googleCallback'])->name('api.signin.google.callback');
 
+Route::get('/', function(){
+    return abort(403, "Forbidden");
+});
+
 require __DIR__ . '/auth.php';
