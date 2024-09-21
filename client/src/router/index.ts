@@ -4,6 +4,7 @@ import RegisterView from '@/views/registerView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { Component } from 'vue';
 import AuthLayout from '@/layout/AuthLayout.vue';
+import detailCulture from '@/views/detailCulture.vue';
 import 'vue-router';
 declare module 'vue-router' {
     interface RouteMeta {
@@ -24,6 +25,11 @@ const router = createRouter({
         return { top: 0 };
     },
     routes: [
+
+        {
+            path: '/budaya/:id',
+            component: detailCulture
+        },
         {
             path: '/register',
             name: 'register',

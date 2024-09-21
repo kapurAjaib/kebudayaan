@@ -6,8 +6,10 @@ import App from './App.vue';
 import router from './router';
 import Aura from '@primevue/themes/aura';
 
-const app = createApp(App);
 
+
+
+const app = createApp(App);
 app.use(PrimeVue, {
     theme: {
         preset: Aura,
@@ -20,7 +22,6 @@ app.use(PrimeVue, {
         },
     },
 });
-
 app.use(createPinia());
 app.use(router);
 

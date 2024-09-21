@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.0.4",
+    "@splidejs/vue-splide": "^0.6.12",
     "axios": "^1.7.7",
     "bootstrap-icons": "^1.11.3",
     "pinia": "^2.1.7",

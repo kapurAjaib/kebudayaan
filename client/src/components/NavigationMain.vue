@@ -18,7 +18,7 @@ onMounted(async () => {
 
 </script>
 <template>
-    <nav class="fixed nav w-full" ref="nav">
+    <nav class="fixed nav w-full" ref="nav" v-show="!state.hide">
         <div class="navbar-nav  w-full gap-4 align-items-center">
             <div class="logo">
             </div>

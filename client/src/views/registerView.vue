@@ -121,10 +121,6 @@ const togglePassword = () => {
     background-color: #F2F2F2;
 }
 
-.register-input:focus {
-    outline: solid 2px rgb(57, 60, 160);
-}
-
 .register-input.is-error:focus {
     outline: solid 2px red;
 }

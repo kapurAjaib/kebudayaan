@@ -29,7 +29,7 @@ defineExpose({
 });
 </script>
 <template>
-    <div class="search-card-wrapper" @click="backdropClick" v-if="isActive">
+    <div class="search-card-wrapper sm:pt-1" @click="backdropClick" v-if="isActive">
         <div class="search-card">
             <div class="search-wrapper">
                 <div class="search-input-box">
@@ -80,12 +80,13 @@ defineExpose({
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     z-index: 40;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    padding-block: 10px;
+    overflow: auto;
+    /* padding-top: 10px; */
     background:
         linear-gradient(rgba(0, 0, 0, 0.6),
             rgba(0, 0, 0, 0.6))

@@ -30,7 +30,7 @@ onUnmounted(() => {
 </script>
 <template>
     <section class="hero" :style="{ 'padding-top': `${navHeight}px` }">
-        <div>
+        <div class="sm:h-screen">
             <div class="text-center">
                 <h1 class="hero-title m-0 p-0">Mari jelajahi budaya Kita</h1>
                 <div class="brand-name">
@@ -199,7 +199,6 @@ onUnmounted(() => {
 }
 
 .hero>div {
-    height: 100vh;
     padding: 80px 20px;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.8) url('@/assets/image/home/nyepi.png');
@@ -325,9 +324,7 @@ onUnmounted(() => {
 }
 
 @media screen and (max-width: 576px) {
-    .hero>div {
-        height: auto;
-    }
+
 
     .gallery-grid {
         grid-template-columns: repeat(12, 1fr);

@@ -23,7 +23,7 @@ export default defineConfig({
                             from: path,
                         };
                     }
-                },
+                }
             ],
         }),
     ],
