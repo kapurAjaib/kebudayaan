@@ -10,6 +10,7 @@ const nav = ref<HTMLElement>();
 const activeNavSearch = () => {
     navSearch.value?.toggleActive(true);
 }
+const isAuth = ref(true);
 onMounted(async () => {
     await nextTick();
     state.height = nav.value?.clientHeight || 0;
@@ -30,21 +31,40 @@ onMounted(async () => {
                 </div>
                 <div>Budaya</div>
                 <div>Acara</div>
-                <div>Contact</div>
+                <div>
+                    <RouterLink to="/contact" class="router-link">
+                        Contact
+                    </RouterLink> 
+                </div>
             </div>
-            <div class="justify-content-end w-full flex gap-4 align-items-center">
+            <div class="justify-content-end w-full flex gap-4 align-items-center" v-if="!isAuth">
                 <div class="search relative " @click="activeNavSearch">
                     <i class="bi bi-search  search-icon"></i>
                     <input type="text" class="search-input" placeholder="Search" :value="navSearch?.searchModel" />
                 </div>
-                <div>Login</div>
+                <div class="nav-login">Login</div>
                 <div class="nav-register">Register</div>
+            </div>
+            <div class="justify-content-end w-full flex gap-4 align-items-center" v-else>
+                <div class="search relative " @click="activeNavSearch">
+                    <i class="bi bi-search  search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search" :value="navSearch?.searchModel" />
+                </div>
+                <div>
+                    <i class="bi bi-plus-square text-2xl text-gray"></i>
+                </div>
+                <div class="profile-pic">
+                </div>
             </div>
         </div>
     </nav>
     <NavSearch ref="navSearch" />
 </template>
 <style scoped>
+.text-gray {
+    color: rgb(95, 99, 104);
+}
+
 .logo {
     padding: 20px;
     border-radius: 50%;
@@ -112,5 +132,12 @@ onMounted(async () => {
     padding: 8px 13px;
     color: white;
     background-color: #00A3FF;
+}
+
+.profile-pic {
+    width: 30px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    background-color: black;
 }
 </style>

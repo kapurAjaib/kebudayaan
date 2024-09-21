@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ForgotPasswordController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\SigninController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::get('/', function () {
 Route::prefix(env("API_VERSION"))->middleware('guest')->group(function () {
     Route::post('signin', [SigninController::class, 'auth'])->name('api.signin');
     Route::post('signup', [RegisterController::class, 'register'])->name('api.signup');
+    Route::post('contactus', [ContactController::class, 'contactUs'])->name('api.contactus');
     Route::post('forgot-password', [ForgotPasswordController::class, 'send'])->name('user')->middleware('throttle:6,1');
     Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('reset.password')->middleware('throttle:6,1');
 });

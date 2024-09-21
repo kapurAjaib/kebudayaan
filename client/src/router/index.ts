@@ -6,6 +6,7 @@ import type { Component } from 'vue';
 import AuthLayout from '@/layout/AuthLayout.vue';
 import detailCulture from '@/views/detailCulture.vue';
 import 'vue-router';
+import ContactView from '@/views/contactView.vue';
 declare module 'vue-router' {
     interface RouteMeta {
         layout?: Component 
@@ -49,6 +50,10 @@ const router = createRouter({
         {
             path: '/',
             component: HomeView,
+        },
+        {
+            path: '/contact',
+            component: ContactView,
         },
     ],
 });

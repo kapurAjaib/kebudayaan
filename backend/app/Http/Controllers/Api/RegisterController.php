@@ -17,14 +17,14 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
             'phone' => 'nullable'
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
-                'message' => $validator->errors(),
+                'errors' => $validator->errors(),
                 'code' => 422
             ], 422);
         }

@@ -75,7 +75,8 @@ onUnmounted(() => {
                         Pulau
                         yang ada di Indonesia mulai dari sabang sampai merauke.
                     </p>
-                    <p class="mb-0">Explore Budaya mencakup hampir seluruh wilayah yang ada di Indonesia.
+                    <p class="mb-0">
+                        Explore Budaya mencakup hampir seluruh wilayah yang ada di Indonesia.
                         Seperti
                         Provinsi :</p>
                 </div>
@@ -179,9 +180,112 @@ onUnmounted(() => {
                 </div>
             </div>
             <div class="flex justify-content-center mt-4">
-                <button class="btn-see-another">
+                <button class="btn-see-another btn-blue">
                     Lihat Lainnya
                 </button>
+            </div>
+        </div>
+    </section>
+    <section class="event-list pb-5">
+        <div class="container py-4">
+            <h1 class="text-2xl mb-2">Acara</h1>
+            <div class="grid">
+                <div class="col-12 sm:col-6 md:col-4">
+                    <div class="event-list-item py-4 px-3">
+                        <div>
+                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                        </div>
+                        <div>
+                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
+                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
+                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 sm:col-6 md:col-4">
+                    <div class="event-list-item py-4 px-3">
+                        <div>
+                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                        </div>
+                        <div>
+                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
+                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
+                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 sm:col-6 md:col-4">
+                    <div class="event-list-item py-4 px-3">
+                        <div>
+                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                        </div>
+                        <div>
+                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
+                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
+                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 sm:col-6 md:col-4">
+                    <div class="event-list-item py-4 px-3">
+                        <div>
+                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                        </div>
+                        <div>
+                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
+                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
+                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 sm:col-6 md:col-4">
+                    <div class="event-list-item py-4 px-3">
+                        <div>
+                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                        </div>
+                        <div>
+                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
+                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
+                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 sm:col-6 md:col-4">
+                    <div class="event-list-item py-4 px-3">
+                        <div>
+                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                        </div>
+                        <div>
+                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
+                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
+                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-content-center mt-4">
+                <button class="btn-blue">
+                    Lihat Lainnya
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="action mt-6 mb-6">
+        <div class="container text-center">
+            <h1 class="text-lg text-blue mb-1 font-medium">Explore budaya</h1>
+            <h2 class="text-3xl mt-0 mb-1">Mari jelajahi budaya kita</h2>
+            <div class="action-content">
+                Setiap daerah mempunyai keunikan budayanya masing masing. Mari tambah wawasanmu dengan bergabung ke
+                explore budaya
+            </div>
+            <div class="text-center mt-4">
+                <RouterLink to="/" class="link-blue font-semibold uppercase text-lg">Jelajahi Budaya</RouterLink>
             </div>
         </div>
     </section>
@@ -291,25 +395,29 @@ onUnmounted(() => {
     color: #00A3FF;
 }
 
-.culture-list {
+.culture-list,
+.event-list {
     background: url('@/assets/image/home/bg.png');
 }
 
-.culture-list-item {
+.culture-list-item,
+.event-list-item {
     transition: all 600ms;
     border-radius: 4px;
 }
 
-.culture-list-item img {
+.culture-list-item img,
+.event-list-item img {
     border-radius: 8px;
 }
 
-.culture-list-item:hover {
+.culture-list-item:hover,
+.event-list-item:hover {
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
 }
 
-.btn-see-another {
+.btn-blue {
     border: 0;
     font-weight: 600;
     background-color: #00A3FF;
@@ -319,8 +427,21 @@ onUnmounted(() => {
     transition: background-color 500ms;
 }
 
-.btn-see-another:hover {
+.btn-blue:hover {
     background-color: #0f419e;
+}
+
+.action-content {
+    margin: auto;
+    max-width: 500px;
+}
+
+.link-blue {
+    color: #00A3FF;
+}
+
+.link-blue:hover {
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 576px) {
