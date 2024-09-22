@@ -30,19 +30,16 @@ const commentOp = ref<ComponentExposed<typeof Popover>>();
             </div>
             <div>
                 <div class="flex justify-content-between">
-                    <div class="font-medium pb-1">John Doe</div>
+                    <div class="font-medium pb-1">Putu Adi</div>
                     <div class="text-lg comment-btn-action" @click="toggleCommentOp">
                         <i class="bi bi-three-dots-vertical"></i>
                     </div>
 
                 </div>
                 <div class="comment-content">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum
-                    has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                    galley of type and
-                    scrambled it to make a type specimen book. It has survived not only five centuries,
+                    Indonesia kaya banget sama budaya! 😍 Dari Sabang sampai Merauke, tiap daerah punya tradisi, bahasa,
+                    dan adat istiadat yang keren banget. Bangga jadi orang Indonesia! 🇮🇩❤️ Ayo kita jaga dan
+                    lestarikan budaya kita biar nggak hilang ditelan zaman 🙌 #BanggaBudayaIndonesia #LestarikanBudaya
                 </div>
                 <div class="mt-2 flex gap-4">
 
@@ -50,9 +47,9 @@ const commentOp = ref<ComponentExposed<typeof Popover>>();
                         <i class="bi bi-chat text-xl"></i>
                         Balas
                     </div>
-                    <div class="flex gap-2 align-items-center font-medium">
+                    <!-- <div class="flex gap-2 align-items-center font-medium">
                         Lihat Balasan
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

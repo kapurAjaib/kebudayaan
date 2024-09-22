@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { navMainStore } from "@/stores/navMain";
 import { submitForm } from "@/service/apiService";
 import { ref } from "vue";
 import { useToast } from "primevue/usetoast";
 const toast = useToast();
 
+const navState = navMainStore();
+
+navState.active = 'contact';
 const showSuccess = () => {
   toast.add({
     severity: "success",
@@ -55,55 +59,37 @@ const submitContactForm = async () => {
     </div>
     <div class="col-8">
       <div class="flex flex-column align-items-center md:px-5 lg:px-3 px-4">
-        <div
-          class="lg:min-h-screen w-full flex flex-column justify-content-center align-items-center pt-5"
-        >
+        <div class="lg:min-h-screen w-full flex flex-column justify-content-center align-items-center pt-5">
           <h1 class="contact-title text-center">Contact US</h1>
           <form class="contact-form pb-4" @submit.prevent="submitContactForm">
             <div class="input-group">
               <div class="contact-label-input">Name</div>
-              <input
-                v-model="formData.name"
-                class="contact-input"
-                :class="{ 'is-error': errors.name }"
-                placeholder="Enter your name"
-              />
+              <input v-model="formData.name" class="contact-input" :class="{ 'is-error': errors.name }"
+                placeholder="Enter your name" />
               <div class="input-error-text" v-if="errors.name">
                 {{ errors.name }}
               </div>
             </div>
             <div class="input-group">
               <div class="contact-label-input">email</div>
-              <input
-                v-model="formData.email"
-                class="contact-input"
-                placeholder="Enter your email"
-                :class="{ 'is-error': errors.name }"
-              />
+              <input v-model="formData.email" class="contact-input" placeholder="Enter your email"
+                :class="{ 'is-error': errors.name }" />
               <div class="input-error-text" v-if="errors.email">
                 {{ errors.email }}
               </div>
             </div>
             <div class="input-group">
               <div class="contact-label-input">Phone</div>
-              <input
-                v-model="formData.phone"
-                class="contact-input"
-                placeholder="Enter your phone"
-                :class="{ 'is-error': errors.name }"
-              />
+              <input v-model="formData.phone" class="contact-input" placeholder="Enter your phone"
+                :class="{ 'is-error': errors.name }" />
               <div class="input-error-text" v-if="errors.phone">
                 {{ errors.phone }}
               </div>
             </div>
             <div class="input-group">
               <div class="contact-label-input">Message</div>
-              <textarea
-                v-model="formData.message"
-                class="contact-input"
-                placeholder="Enter your message"
-                :class="{ 'is-error': errors.name }"
-              ></textarea>
+              <textarea v-model="formData.message" class="contact-input" placeholder="Enter your message"
+                :class="{ 'is-error': errors.name }"></textarea>
               <div class="input-error-text" v-if="errors.message">
                 {{ errors.message }}
               </div>
@@ -131,7 +117,7 @@ const submitContactForm = async () => {
   background-size: cover;
 }
 
-.side-content > div {
+.side-content>div {
   align-items: end;
 }
 

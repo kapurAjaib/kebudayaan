@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { submitForm } from '@/service/apiService';
+import { AxiosError } from 'axios';
 import { useToast } from 'primevue/usetoast';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -24,11 +25,8 @@ const togglePassword = () => {
 const submitRegistrationForm = async () => {
     const endpoint = 'http://localhost:8000/api/1.0/signup';
     const response = await submitForm(endpoint, formData.value, errors);
-    if (response) {
-        console.log('Registration successful:', response);
-        setTimeout(() => {
-            router.push('/register');
-        }), 3000;
+    if (!(response instanceof AxiosError)) {
+        router.push('/');
     }
 }
 
@@ -45,14 +43,16 @@ const submitRegistrationForm = async () => {
         <form class="register-form pb-4" @submit.prevent="submitRegistrationForm">
             <div class="input-group">
                 <div class="register-label-input">username</div>
-                <input v-model="formData.name" class="register-input" :class="{ 'is-error': errors.name }" placeholder="Enter your name" />
+                <input v-model="formData.name" class="register-input" :class="{ 'is-error': errors.name }"
+                    placeholder="Enter your name" />
                 <div class="input-error-text" v-if="errors.name">
                     {{ errors.name }}
                 </div>
             </div>
             <div class="input-group">
                 <div class="register-label-input">email</div>
-                <input v-model="formData.email" class="register-input" placeholder="Enter your email" :class="{ 'is-error': errors.name }" />
+                <input v-model="formData.email" class="register-input" placeholder="Enter your email"
+                    :class="{ 'is-error': errors.name }" />
                 <div class="input-error-text" v-if="errors.email">
                     {{ errors.email }}
                 </div>
@@ -60,8 +60,9 @@ const submitRegistrationForm = async () => {
             <div class="input-group">
                 <div class="register-label-input">password</div>
                 <div class="input-password-wrapper">
-                    <input v-model="formData.password" class="register-input input-password" placeholder="Enter your password"
-                        :type="isPasswordVisible ? 'text' : 'password'" :class="{ 'is-error': errors.name }" />
+                    <input v-model="formData.password" class="register-input input-password"
+                        placeholder="Enter your password" :type="isPasswordVisible ? 'text' : 'password'"
+                        :class="{ 'is-error': errors.name }" />
                     <button class="password-toggler" type="button" @click="togglePassword">
                         <i v-if="!isPasswordVisible" class="bi bi-eye ic-password "></i>
                         <i v-if="isPasswordVisible" class="bi bi-eye-slash ic-password"></i>

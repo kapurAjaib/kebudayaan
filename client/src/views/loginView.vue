@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { submitForm } from "@/service/apiService";
+import { AxiosError } from "axios";
 import { useToast } from "primevue/usetoast";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -31,9 +32,9 @@ const togglePassword = () => {
 };
 
 const submitLoginForm = async () => {
-  const endpoint = "http://localhost:8000/api/1.0/signin";
+  const endpoint = "/api/1.0/signin";
   const response = await submitForm(endpoint, formData.value, errors);
-  if (response) {
+  if (!(response instanceof AxiosError)) {
     router.push("/");
   }
   if (!errors.value.email && !errors.value.password) {
@@ -43,9 +44,7 @@ const submitLoginForm = async () => {
 </script>
 <template>
   <PrimeToast />
-  <div
-    class="lg:min-h-screen flex flex-column justify-content-center align-items-center pt-5"
-  >
+  <div class="lg:min-h-screen flex flex-column justify-content-center align-items-center pt-5">
     <h1 class="login-title text-center">Login</h1>
     <h2 class="login-subtitle">
       Welcome back, login to learn and explore more about Indonesian culture.
@@ -53,12 +52,8 @@ const submitLoginForm = async () => {
     <form class="login-form pb-6" @submit.prevent="submitLoginForm">
       <div class="input-group">
         <div class="login-label-input">email</div>
-        <input
-          v-model="formData.email"
-          class="login-input"
-          placeholder="Enter your email"
-          :class="{ 'is-error': errors.name }"
-        />
+        <input v-model="formData.email" class="login-input" placeholder="Enter your email"
+          :class="{ 'is-error': errors.name }" />
         <div class="input-error-text" v-if="errors.email">
           {{ errors.email }}
         </div>
@@ -66,18 +61,9 @@ const submitLoginForm = async () => {
       <div class="input-group">
         <div class="login-label-input">password</div>
         <div class="input-password-wrapper">
-          <input
-            v-model="formData.password"
-            class="login-input input-password"
-            placeholder="Enter your password"
-            :type="isPasswordVisible ? 'text' : 'password'"
-            :class="{ 'is-error': errors.name }"
-          />
-          <button
-            class="password-toggler"
-            type="button"
-            @click="togglePassword"
-          >
+          <input v-model="formData.password" class="login-input input-password" placeholder="Enter your password"
+            :type="isPasswordVisible ? 'text' : 'password'" :class="{ 'is-error': errors.name }" />
+          <button class="password-toggler" type="button" @click="togglePassword">
             <i v-if="!isPasswordVisible" class="bi bi-eye ic-password"></i>
             <i v-if="isPasswordVisible" class="bi bi-eye-slash ic-password"></i>
           </button>
@@ -91,18 +77,12 @@ const submitLoginForm = async () => {
       </div>
       <div class="text-center my-2">or</div>
       <div class="login-google">
-        <img
-          src="@/assets/image/icon/ic-color-google.svg"
-          class="ic-register"
-        />
+        <img src="@/assets/image/icon/ic-color-google.svg" class="ic-register" />
         <div class="pl-2 register-google-text">Login with google</div>
       </div>
       <div class="text-register-question">
         dont have account?
-        <RouterLink
-          to="/register"
-          class="color-primary no-underline text-underline-hover"
-        >
+        <RouterLink to="/register" class="color-primary no-underline text-underline-hover">
           Register now
         </RouterLink>
       </div>

@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import { navMainStore } from '@/stores/navMain';
-
 const navMain = navMainStore();
 
-
+navMain.active = 'home';
 const navHeight = ref(0);
 let abortController: AbortController;
 const resize = () => {
@@ -25,8 +24,6 @@ onUnmounted(() => {
     abortController.abort();
 });
 
-
-
 </script>
 <template>
     <section class="hero" :style="{ 'padding-top': `${navHeight}px` }">
@@ -36,9 +33,11 @@ onUnmounted(() => {
                 <div class="brand-name">
                     Explore <span class="brand-name-dark-blue">Budaya</span>
                 </div>
-                <button class="action-btn mt-3">
-                    <RouterLink to="/">Jelajahi sekarang</RouterLink>
-                </button>
+                <RouterLink to="/culture">
+                    <button class="action-btn mt-3">
+                        Jelajahi sekarang
+                    </button>
+                </RouterLink>
             </div>
         </div>
     </section>
@@ -91,8 +90,6 @@ onUnmounted(() => {
                     <img src="@/assets/image/home/map.png" class="w-full" alt="Map" />
                 </div>
             </div>
-
-
         </div>
     </section>
 
@@ -103,12 +100,16 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="culture-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://trigger.id/wp-content/uploads/2022/08/Karapan_Sapi.jpg" class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Karapan Sapi</h2>
+                            <div class="max-line-3">
+                                Karapan sapi adalah salah satu upacara adat yang dilakukan masyarakat Madura secara
+                                turun-temurun.
+
+                                Upacara ini dilakukan dalam bentuk perlombaan pacuan sapi yang dilakukan pada sebuah
+                                pesta rakyat yang dilakukan secara turun-temurun.
                             </div>
                         </div>
                     </div>
@@ -116,12 +117,17 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="culture-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://thephrase.s3.ap-southeast-1.amazonaws.com/2023/05/Kasada_Umat_Hindu-scaled.webp"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Kasada</h2>
+                            <div class="max-line-3">
+                                Upacara Kasada yang dilakukan setiap tahunnya juga termasuk contoh kebudayaan Indonesia
+                                yang selalu dilestarikan.
+
+                                Upacara yang dilakukan setiap tanggal 14 Kasada kalender tradisional Hindu Tengger
+                                adalah janji Suku Tengger kepada Bromo.
                             </div>
                         </div>
                     </div>
@@ -129,12 +135,18 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="culture-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="@/assets/image/home/grid-img1.jpg" class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Tari Kecak</h2>
+                            <div class="max-line-3">
+                                Tari Kecak adalah pertunjukan drama tari khas Bali yang umumnya mengangkat kisah
+                                Ramayana. Tarian ini ditarikan oleh puluhan penari laki-laki yang duduk secara
+                                melingkar.
+
+                                Mereka menyerukan "cak cak cak" sambil mengangkat kedua lengan. Pada satu segmen, mereka
+                                menirukan adegan saat barisan kera membantu Rama dalam pertempuran melawan Rahwana yang
+                                menculik Dewi Sita.
                             </div>
                         </div>
                     </div>
@@ -142,12 +154,15 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="culture-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://pdbifiles.nos.jkt-1.neo.id/files/2020/06/13/widraaudina1_Info-terkait-dengan-Upacara-Tanam-Sasi-yang-ada-di-Papua_1592029248.jpg"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Tanam Sasi</h2>
+                            <div class="max-line-3">
+                                Tanam sasi adalah upacara adat untuk mempengirangi kematian di Merauke. Sasi yang
+                                digunakan pada upacara ini adalah sejenis kayu yang akan ditanam ketika kematian sudah
+                                mencapai 40 hari dan dicabut setelah 1000 hari.
                             </div>
                         </div>
                     </div>
@@ -155,12 +170,16 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="culture-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://indonesiakaya.com/wp-content/uploads/2020/10/Festival_Tabuik_1200.jpg"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Tabuik</h2>
+                            <div class="max-line-3">
+                                Kota Pariaman juga memiliki tradisi tahunan yang selalu dilakukan setiap tanggal 10
+                                Muharram. Tabuik atau tabut yang berarti peti kayu ini mengisahkan tentang peti katu
+                                yang berisi jenazah cucu Nabi diterbangkan oleh buraq, sehingga masyarakat Pariaman
+                                meniru bentuk buroq.
                             </div>
                         </div>
                     </div>
@@ -168,20 +187,24 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="culture-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://awsimages.detik.net.id/community/media/visual/2023/01/08/makepung-di-sirkuit-tuwed-jembrana-foto-dok-bupati-jembrana-cup.jpeg?w=1200"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Makepung</h2>
+                            <div class="max-line-3">
+                                Makepung adalah bagian dari contoh kebudayaan Indonesia yang dilakukan di Bali. Makepung
+                                yang berupa balapan kerbau ini pada dasarnya adalah permainan petani berupa membajak
+                                sawah dan menjadi tradisi khusus untuk peringatan perayaan tertentu.
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="flex justify-content-center mt-4">
                 <button class="btn-see-another btn-blue">
-                    Lihat Lainnya
+                    <RouterLink to="/culture">Lihat Lainnya</RouterLink>
                 </button>
             </div>
         </div>
@@ -193,12 +216,14 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="event-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://sman20kabupatentangerang.sch.id/media_library/posts/large/393ba7d708fd154dc4bc51e581a2582e.jpg"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Festival Erau</h2>
+                            <div class="max-line-3">
+                                Festival adat dari Kesultanan Kutai Kartanegara yang menampilkan ritual sakral,
+                                tari-tarian tradisional, dan lomba perahu naga.
                             </div>
                         </div>
                     </div>
@@ -206,12 +231,14 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="event-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://www.pesonaindo.com/wp-content/uploads/2016/04/Waisak-borobudur.jpg"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Festival Malam 1000 Lampion Waisak</h2>
+                            <div class="max-line-3">
+                                Festival yang dilakukan saat perayaan Waisak dengan menerbangkan ribuan lampion di
+                                sekitar Candi Borobudur, sebagai simbol harapan dan doa.
                             </div>
                         </div>
                     </div>
@@ -219,12 +246,13 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="event-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://statik.tempo.co/data/2021/06/29/id_1031279/1031279_720.jpg"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Festival Teluk Jailolo</h2>
+                            <div class="max-line-3"> Festival ini menampilkan seni budaya dari berbagai suku di Maluku
+                                Utara seperti tari-tarian, musik tradisional, dan pameran kuliner.
                             </div>
                         </div>
                     </div>
@@ -232,12 +260,13 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="event-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://asset.kompas.com/crops/9tV81Ig1Fpub8RWUu56-CnUh8ZQ=/0x0:780x520/750x500/data/photo/2019/07/29/5d3f08e4a92e4.jpg"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Dieng Culture Festival</h2>
+                            <div class="max-line-3">Acara ini menampilkan ritual pemotongan rambut gimbal anak-anak
+                                Dieng, dengan berbagai pertunjukan budaya, karnaval, serta penerbangan lampion.
                             </div>
                         </div>
                     </div>
@@ -245,12 +274,13 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="event-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://statik.tempo.co/data/2019/09/28/id_876287/876287_720.jpg"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Festival Tanjung Lesung</h2>
+                            <div class="max-line-3">Acara budaya dan seni yang menampilkan pertunjukan musik, tari, dan
+                                kuliner khas Banten.
                             </div>
                         </div>
                     </div>
@@ -258,12 +288,13 @@ onUnmounted(() => {
                 <div class="col-12 sm:col-6 md:col-4">
                     <div class="event-list-item py-4 px-3">
                         <div>
-                            <img src="@/assets//image/home/home1.jpg" class="w-full" />
+                            <img src="https://malangstrudel.com/wp-content/uploads/2017/09/Kudalumping_590x300.jpg"
+                                class="w-full" />
                         </div>
                         <div>
-                            <h2 class="text-xl mb-0 mt-2">Nama</h2>
-                            <div class="max-line-3">sdhsdlkhsdlk khdgsjhvabd ashdvjhasv dbskasdaskvasd vasvjhavsjhsad
-                                jasdvjhasdv adjva shhddddj dshjk bdsjshksd sjsdkj hsdkjsd hshdssd sbsd
+                            <h2 class="text-xl mb-0 mt-2">Festival Kuda Lumping</h2>
+                            <div class="max-line-3">Acara seni budaya yang menampilkan pertunjukan tari Kuda Lumping,
+                                yang merupakan seni tradisional Jawa.
                             </div>
                         </div>
                     </div>
@@ -271,7 +302,7 @@ onUnmounted(() => {
             </div>
             <div class="flex justify-content-center mt-4">
                 <button class="btn-blue">
-                    Lihat Lainnya
+                    <RouterLink to="/event">Lihat Lainnya</RouterLink>
                 </button>
             </div>
         </div>
@@ -285,7 +316,7 @@ onUnmounted(() => {
                 explore budaya
             </div>
             <div class="text-center mt-4">
-                <RouterLink to="/" class="link-blue font-semibold uppercase text-lg">Jelajahi Budaya</RouterLink>
+                <RouterLink to="/culture" class="link-blue font-semibold uppercase text-lg">Jelajahi Budaya</RouterLink>
             </div>
         </div>
     </section>

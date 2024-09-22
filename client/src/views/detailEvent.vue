@@ -1,66 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { navMainStore } from '@/stores/navMain';
-import type { ComponentExposed } from 'vue-component-type-helpers';
-import type ImgDetail from '@/components/ImgDetail.vue';
 
-const loadImage = (imgName: string) => {
-    return new URL(`/src/assets/image/home/${imgName}`, import.meta.url).toString();
-};
-const dataImage = ref([
-    loadImage('grid-img1.jpg'),
-    loadImage('grid-img2.jpg'),
-    loadImage('grid-img4.jpg'),
-    loadImage('grid-img1.jpg'),
-    loadImage('grid-img2.jpg'),
-    loadImage('grid-img4.jpg'),
-]);
-const imgDetail = ref<ComponentExposed<typeof ImgDetail>>();
 const nav = navMainStore();
-nav.active = 'culture';
-const carouselResponsiveOptions = ref([
-    {
-        breakpoint: '767px',
-        numVisible: 2,
-        numScroll: 1
-    },
-    {
-        breakpoint: '500px',
-        numVisible: 1,
-        numScroll: 1
-    }
-]);
-const imageClick = (index: number) => {
-    imgDetail.value?.setIndex(index);
-    imgDetail.value?.toggleActive(true);
-};
-
+const bg = new URL(`@/assets/image/home/grid-img1.jpg`, import.meta.url).href;
+nav.active = 'event';
 </script>
 <template>
-    <ImgDetail :img="dataImage" ref="imgDetail" />
-    <section class="hero xl:h-screen flex align-items-center" :style="{ '--padding-top': `${nav.height}px` }">
-        <div class="container-full ">
-            <div class="grid-hero">
-                <div class="flex align-items-end h-full pb-6 sm:pb-8">
-                    <div>
-                        <h1 class="text-white font-semibold mb-0 hero-text-title">Tari Kecak</h1>
-                        <div class="text-xl text-white font-medium">Oleh Nyoman</div>
-                        <div class="flex text-blue mt-4 gap-4">
-                            <div class="flex gap-2 align-items-center">
-                                <i class="bi bi-share-fill text-xl"></i>
-                                <div class="hidden sm:block">Bagikan</div>
-                            </div>
-                            <div class="flex gap-2 align-items-center">
-                                <i class="bi bi-bookmark-fill text-xl"></i>
-                                <div class="hidden sm:block">Tambahkan ke bookmark</div>
-                            </div>
-
-                        </div>
-                    </div>
+    <section class="hero lg:h-screen flex align-items-center text-white "
+        :style="{ '--padding-top': `${nav.height}px`, '--background-image': `url(${bg})` }">
+        <div class="container-full flex justify-content-center flex-column align-items-center py-8">
+            <div class=" hero-text-title font-medium">Pesta kesenian bali</div>
+            <!-- <div class="hero-timer-grid ">
+                <div class="flex align-items-center justify-content-center gap-2 flex-column">
+                    <div class="hero-text-timer">30</div>
+                    <div>Hari</div>
                 </div>
-                <div class="relative">
-                    <img src="@/assets/image/home/grid-img1.jpg" class="w-full grid-hero-img px-1" alt="hero image" />
-                    <div class="darken-gradient"></div>
+                <div class="flex align-items-center justify-content-center gap-2 flex-column">
+                    <div class="hero-text-timer">10</div>
+                    <div>Jam</div>
+                </div>
+                <div class="flex align-items-center justify-content-center gap-2 flex-column">
+                    <div class="hero-text-timer">20</div>
+                    <div>Menit</div>
+                </div>
+                <div class="flex align-items-center justify-content-center gap-2 flex-column">
+                    <div class="hero-text-timer">15</div>
+                    <div>Detik</div>
+                </div>
+            </div> -->
+            <div class="mt-2 text-2xl font-medium">Akan datang</div>
+            <div class="flex text-blue mt-4 gap-4">
+                <div class="flex gap-2 align-items-center">
+                    <i class="bi bi-share-fill text-xl"></i>
+                    <div>Bagikan</div>
+                </div>
+                <div class="flex gap-2 align-items-center">
+                    <i class="bi bi-calendar text-xl"></i>
+                    <div>Tambahkan ke kalender</div>
                 </div>
             </div>
         </div>
@@ -68,74 +44,49 @@ const imageClick = (index: number) => {
     <div class="container-full mt-6">
         <div class="grid">
             <div class="lg:col-8 col-12">
-                <section class="carousel-culture">
-                    <PrimeCarousel :value="dataImage" :numScroll="1" :numVisible="2" :pt="{
-                        pcPrevButton: {
-                            root: {
-                                class: 'carousel-culture-prev-btn'
-                            }
-                        },
-                        pcNextButton: {
-                            root: {
-                                class: 'carousel-culture-next-btn'
-                            }
-                        }
-                    }" :showIndicators="false" :responsiveOptions="carouselResponsiveOptions">
-                        <template #previcon>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px"
-                                fill="black">
-                                <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z" />
-                            </svg>
-                        </template>
-                        <template #item="props">
-                            <div class="px-2" @click="imageClick(props.index)">
-                                <img :src="props.data" class="w-full bright border-round-md" alt="carousel image" />
-                            </div>
-                        </template>
-                        <template #nexticon>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px"
-                                fill="black">
-                                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-                            </svg>
-                        </template>
-
-                    </PrimeCarousel>
-                </section>
-                <section class="about-culture">
-                    <h1 class="main-title font-semibold mt-6 mb-3">Tentang Kebudayaan</h1>
-                    <div class="about-culture-content line-height-3">
-                        Tari Kecak adalah pertunjukan drama tari khas Bali yang umumnya mengangkat kisah
-                        Ramayana. Tarian ini ditarikan oleh puluhan penari laki-laki yang duduk secara
-                        melingkar.
-
-                        Mereka menyerukan "cak cak cak" sambil mengangkat kedua lengan. Pada satu segmen, mereka
-                        menirukan adegan saat barisan kera membantu Rama dalam pertempuran melawan Rahwana yang
-                        menculik Dewi Sita.
+                <section class="about">
+                    <h1 class="main-title font-semibold mt-6 mb-3">Tentang Acara</h1>
+                    <div class="line-height-3">
+                        Pesta Kesenian Bali adalah parade atau festival kesenian tahunan yang diprakarsai oleh Pemerintah Provinsi Bali, serta dijadikan sebagai wadah aktivitas dan kreativitas para seniman dalam upaya mendukung program pemerintah dalam hal penggalian, pelestarian, dan pengembangan nilai-nilai seni budaya Bali. 
                     </div>
                 </section>
                 <section class="information">
-                    <h1 class="main-title font-semibold mt-6 mb-1">Informasi Tulisan</h1>
-                    <div class="about-culture-content line-height-3">
+                    <h1 class="main-title font-semibold mt-6 mb-1">Informasi Acara</h1>
+                    <div class="line-height-3">
                         <div class="grid-information ">
                             <div class="flex gap-3">
                                 <i class="bi bi-geo-alt text-xl"></i>
                                 <div>
-                                    <div class="font-semibold">Asal budaya</div>
-                                    <div>Bali</div>
+                                    <div class="font-semibold">Lokasi acara</div>
+                                    <div>Jl. Nusa Indah No.1, Panjer, Denpasar Selatan, Kota Denpasar, Bali 80236</div>
                                 </div>
                             </div>
                             <div class="flex gap-3 mt-4">
                                 <i class="bi bi-pen text-xl"></i>
                                 <div>
-                                    <div class="font-semibold">Penulis</div>
-                                    <div>Made Anggara</div>
+                                    <div class="font-semibold">Penyelenggara</div>
+                                    <div>Pemerintah Provinsi Bali</div>
                                 </div>
                             </div>
                             <div class="flex gap-3 mt-4">
                                 <i class="bi bi-calendar text-xl"></i>
                                 <div>
-                                    <div class="font-semibold">Tanggal dibuat</div>
-                                    <div>20/20/2020</div>
+                                    <div class="font-semibold">Jadwal Acara</div>
+                                    <div>20/20/2020(07.00 wita) - 21/20/2020(08.00 wita)</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-4">
+                                <i class="bi bi-ticket-perforated text-xl"></i>
+                                <div>
+                                    <div class="font-semibold">Harga Tiket</div>
+                                    <div>20.0000</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-4">
+                                <i class="bi bi-patch-question text-xl"></i>
+                                <div>
+                                    <div class="font-semibold">Cara membeli</div>
+                                    <div>Hubungi 082147702095</div>
                                 </div>
                             </div>
                             <div class="flex gap-3 mt-4">
@@ -149,16 +100,16 @@ const imageClick = (index: number) => {
                     </div>
                 </section>
                 <section class="category">
-                    <h1 class="main-title font-semibold mt-6 mb-3">Kategori Kebudayaan</h1>
+                    <h1 class="main-title font-semibold mt-6 mb-3">Kategori Acara</h1>
                     <div class="flex gap-3">
                         <div class="category-item">
-                            Tarian
+                            Kesenian
                         </div>
                         <div class="category-item">
-                            Sakral
+                            Acara tahunan
                         </div>
                         <div class="category-item">
-                            Upacara
+                            Pesta kesenian
                         </div>
                     </div>
                 </section>
@@ -190,34 +141,34 @@ const imageClick = (index: number) => {
                 <section class="mt-4 mb-5">
                     <div class="font-medium flex gap-3 align-items-center">
                         <i class="bi bi-flag text-lg"></i>
-                        <div>Laporkan Tulisan</div>
+                        <div>Laporkan acara</div>
                     </div>
                 </section>
             </div>
             <div class="lg:col-4 col-12 lg:pl-6">
                 <section class="related-culture">
-                    <h1 class="main-title font-semibold mb-3">Tulisan serupa</h1>
+                    <h1 class="main-title font-semibold mb-3">Acara serupa</h1>
                     <div class="grid">
                         <div class="flex gap-2 lg:col-12 sm:col-6 col-12 related-culture-item">
                             <div>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/ST_5670.jpg" width="80" alt="hero image"
+                                <img src="@/assets/image/home/grid-img1.jpg" width="80" alt="hero image"
                                     class="border-round-md" />
 
                             </div>
                             <div>
-                                <div class="text-lg font-medium"> Upacara Melasti</div>
-                                <div>Made Anggara</div>
+                                <div class="text-lg font-medium"> Pesta kesenian bali</div>
+                                <div>Gratis</div>
                             </div>
                         </div>
                         <div class="flex gap-2 lg:col-12 sm:col-6 col-12 related-culture-item">
                             <div>
-                                <img src="https://mmc.kalteng.go.id/files/berita/06032019114800_0.jpg" width="80" alt="hero image"
+                                <img src="@/assets/image/home/grid-img1.jpg" width="80" alt="hero image"
                                     class="border-round-md" />
 
                             </div>
                             <div>
-                                <div class="text-lg font-medium"> Hari Raya Nyepi</div>
-                                <div>Made Anggara</div>
+                                <div class="text-lg font-medium"> pesta kesenian bali</div>
+                                <div>Gratis </div>
                             </div>
                         </div>
                     </div>
@@ -229,6 +180,25 @@ const imageClick = (index: number) => {
 </template>
 
 <style scoped>
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)), var(--background-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-timer-grid {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.hero-text-timer {
+    line-height: 1;
+    color: #00A3FF;
+    font-size: 4rem;
+}
+
 .comment-list {
     display: flex;
     flex-direction: column;
@@ -236,7 +206,7 @@ const imageClick = (index: number) => {
 }
 
 .main-title {
-    font-size: clamp(1.25rem, 0.5rem + 3vw, 1.6rem);
+    font-size: clamp(0.9rem, 0.5rem + 3vw, 1.2rem);
 }
 
 .border-abc {
@@ -247,7 +217,6 @@ const imageClick = (index: number) => {
 .hero-text-title {
     font-size: clamp(1.6rem, 3vw + 0.5rem, 3rem);
 }
-
 
 .text-blue {
     color: #00A3FF;

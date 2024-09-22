@@ -10,6 +10,7 @@ export const submitForm = async <D extends object,E extends object & {errors? : 
     error = e;
     return e;
   });
+  errors.value = {};
   if (error instanceof AxiosError &&  error?.response?.status === 422) {
     Object.keys(error.response.data.errors).forEach((key) => {
       errors.value[key] = error?.response?.data.errors[key][0];
