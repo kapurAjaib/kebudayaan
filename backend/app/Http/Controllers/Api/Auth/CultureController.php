@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Models\Culture;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\CultureGallery;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CultureController extends Controller
@@ -52,7 +54,7 @@ class CultureController extends Controller
             'tags' => 'nullable|numeric',
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json([
                 'status' => false,
                 'message' => $validator->errors(),
@@ -65,9 +67,10 @@ class CultureController extends Controller
             $culture->name = $request->name;
             $culture->description = $request->description;
             $culture->user_id = $request->user()->id;
+            $culture->slug = Str::slug($request->name) . '-' . time();
             $culture->save();
 
-            if($request->hasFile('images')){
+            if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $key => $file) {
                     $gallery = new CultureGallery();
                     $gallery->culture_id = $culture->id;
@@ -78,9 +81,8 @@ class CultureController extends Controller
                 }
             }
 
-            if($request->tags){
+            if ($request->tags) {
                 foreach ($request->tags as $tag) {
-
                 }
             }
 
@@ -119,7 +121,38 @@ class CultureController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'code' => 400
+            ], 400);
+        }
+
+        try {
+            $culture = Culture::findOrFail($id);
+            $culture->name = $request->name;
+            $culture->description = $request->description;
+            $culture->slug = Str::slug($request->name) . '-' . time();
+            $culture->save();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Culture data has been updated',
+                'data' => $culture,
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage(),
+                'code' => 500
+            ]);
+        }
     }
 
     /**
@@ -127,6 +160,28 @@ class CultureController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $culture = Culture::findOrFail($id);
+
+            $gallery = CultureGallery::where('culture_id', $culture->id)->get();
+
+            foreach ($gallery as $item) {
+                Storage::disk('public')->delete($item->image);
+            }
+            $gallery->delete();
+
+            $culture->delete();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Culture data has been deleted',
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage(),
+                'code' => 500
+            ]);
+        }
     }
 }
